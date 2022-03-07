@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Datos de la persona</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>Datos de la persona</div>
+        <a th:href="@{/}">Regresar</a>
+        <br />
+        <form th:action="@{/guardar}" method="POST" th:object="${persona}">
+            <input type="hidden" name="id" th:field="*{id}" />
+            <label for="nombre" >Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}" />
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el nombre</span>
+            <br />
+            <label for="apellido" >Apellido:</label>
+            <input type="text" name="apellido" th:field="*{apellido}" />
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error en el apellido</span>
+            <br />
+            <label for="email" >Email:</label>
+            <input type="email" name="email" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error en el correo</span>
+            <br />
+            <label for="nombre" >Teléfono:</label>
+            <input type="tel" name="telefono" th:field="*{telefono}" />
+            <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error en el telefono</span>
+            <br />
+            <input type="submit" name="guardar" value="guardar">
+        </form>
+        
+    </body>
+    
+</html>
